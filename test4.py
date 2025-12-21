@@ -61,8 +61,8 @@ graph = StateGraph(State)
 
 # Add nodes
 graph.add_node("check", check_feedback)
-graph.add_node("thank", thank_you)
-graph.add_node("sorry", apology)
+graph.add_node("thanknode", thank_you)
+graph.add_node("sorrynode", apology)
 
 # Add edges
 graph.add_edge(START, "check")
@@ -78,13 +78,13 @@ graph.add_conditional_edges(
     "check",
     decide_next,
     {
-        "thank": "thank",
-        "sorry": "sorry"
+        "thank": "thanknode",
+        "sorry": "sorrynode"
     }
 )
 
-graph.add_edge("thank", END)
-graph.add_edge("sorry", END)
+graph.add_edge("thanknode", END)
+graph.add_edge("sorrynode", END)
 
 # Compile
 workflow = graph.compile()
